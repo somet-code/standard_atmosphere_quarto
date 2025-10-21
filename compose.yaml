@@ -10,4 +10,6 @@ services:
         source: .
         target: /app
     working_dir: /app
-    entrypoint: /bin/bash
+    ports:
+      - "8889:8888"
+    tty: true

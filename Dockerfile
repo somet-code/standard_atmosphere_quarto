@@ -17,3 +17,15 @@ RUN mkdir -p /opt/quarto/${QUARTO_VERSION} && \
     ln -s /opt/quarto/${QUARTO_VERSION}/bin/quarto /usr/local/bin/quarto
 
 RUN quarto check
+
+WORKDIR /app
+
+EXPOSE 8888
+
+ENTRYPOINT ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+
+# http://localhost:8889
+# docker compose up -d
+# docker exec -it ussa1976 bas
+# jupyter server list to get token
+# http://localhost:8889
