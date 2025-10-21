@@ -4,9 +4,8 @@ FROM python:${PYTHON_VERSION}-slim-bookworm
 COPY requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 
-# Version number of Quarto to download and use
-# See https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto for existing versions
-ARG QUARTO_VERSION=1.9.8
+# https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto
+ARG QUARTO_VERSION=1.8.25
 
 RUN apt-get update && apt-get install -y \
     curl
@@ -17,4 +16,4 @@ RUN mkdir -p /opt/quarto/${QUARTO_VERSION} && \
     rm /opt/quarto/${QUARTO_VERSION}/quarto.tar.gz && \
     ln -s /opt/quarto/${QUARTO_VERSION}/bin/quarto /usr/local/bin/quarto
 
-RUN /opt/quarto/${QUARTO_VERSION}/bin/quarto check
+RUN quarto check
