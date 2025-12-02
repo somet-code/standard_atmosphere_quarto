@@ -2,7 +2,8 @@ ARG PYTHON_VERSION=3.14.0
 FROM python:${PYTHON_VERSION}-slim-bookworm
 
 COPY requirements.txt .
-RUN python3 -m pip install -r requirements.txt
+RUN python3 -m pip install --no-cache-dir --upgrade pip && \
+    python3 -m pip install --no-cache-dir -r requirements.txt
 
 # https://github.com/quarto-dev/quarto-cli/pkgs/container/quarto
 ARG QUARTO_VERSION=1.8.25
